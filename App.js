@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Button, StyleSheet,StatusBar} from 'react-native';
 
-export default function App() {
+export default function App(){
+  const [count, setCount] = useState(0);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex :1 , backgroundColor:"lightgreen",padding:50}} >
+      <StatusBar backgroundColor="purple" barStyle="light-content"/>
+
+       <Text>You clicked {count} times</Text>
+
+      <Button
+        onPress={() => setCount (count + 1)}
+        title="Click me!"
+      />
+
+      <View style={{ flex :1,padding :20}} >
+
+         <Button title="Reset" onPress={()=> setCount(0) } />
+         
+      </View>
+     
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
